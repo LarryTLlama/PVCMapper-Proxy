@@ -4,7 +4,7 @@ const fetch = require("node-fetch");
 const path = require("path")
 
 app.use((req, res) => {
-    fetch("https://pvcmapper.my.to" + req.url ).then((result) => {
+    fetch("https://pvcmapper.my.to" + req.url.replace("/api", "") ).then((result) => {
         res.setHeader("Content-Type", result.headers.get("Content-Type"))
         result.body.pipe(res);
     });
